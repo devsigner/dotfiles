@@ -33,13 +33,3 @@ function pman () {
 mount-sshfs () {
   sshfs $@ -o rdonly,noatime,nobrowse,reconnect,compression=yes
 }
-
-# (re-)mount secrets config files, _run inside repository's root_
-function augment-mount-config () {
-  if mount -t osxfusefs | grep config/secrets > /dev/null; then
-    umount config/secrets
-    sleep 0.1 # umount is not immediate and can prevent following mkdir to work correctly.
-  fi
-  mkdir -p config/secrets
-  mount-sshfs puppet.augmentedev.com:web-app/secrets config/secrets
-}

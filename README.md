@@ -3,11 +3,6 @@
 Requirements
 ------------
 
-Load oh-my-zsh
-
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-
 Homebrew:
 ========
 
@@ -16,6 +11,26 @@ http://brew.sh/index_fr.html
 install brew:
 
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+Shell
+-----
+
+* ZSH
+  Load oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+* Fish
+  load fish from homebrew
+    brew install fish --HEAD
+  
+  add the shell to the system know shells: 
+    echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+  make fish your default shell:
+    chsh -s /usr/local/bin/fish
+
+  More details and help:
+  https://github.com/ellerbrock/fish-shell-setup-osx
 
 
 Some tools:

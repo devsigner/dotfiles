@@ -36,16 +36,21 @@ Plug 'jistr/vim-nerdtree-tabs'
 " by switching to the next tab to the left.
 Plug 'jordwalke/VimCloser'
 
-"" tab completion like textmate for snippets
-Plug 'garbas/vim-snipmate'
-
 "" Snippets
+""---------
 
 "" Track the engine.
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'SirVer/ultisnips'
+Plug 'tomtom/tlib_vim'
+
+""Plug 'SirVer/ultisnips'
+"" similar to TextMate or other Vim plugins like UltiSnips
+Plug 'garbas/vim-snipmate'
+
 "" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
+
+""---------
 
 "" syntax checking on save
 Plug 'scrooloose/syntastic'
@@ -63,6 +68,9 @@ Plug 'jiangmiao/auto-pairs'
 "" drawer showing ctags
 Plug 'majutsushi/tagbar'
 
+"" Auto-update ctags files
+Plug 'craigemery/vim-autotag'
+
 "" easily switch between buffers
 " Plug 'jeetsukumaran/vim-buffergator'
 
@@ -77,6 +85,7 @@ Plug 'tpope/vim-endwise'
 
 "" git wrapper
 Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/tpope/vim-rhubarb.git'
 
 "" some vim runtime files that are more up to date than those distributed with vim itself
 Plug 'tpope/vim-git'
@@ -134,9 +143,10 @@ Plug 'tpope/vim-dispatch'
 
 "" thoughtbot vim-rspec send to vim-dispatch, etc
 Plug 'thoughtbot/vim-rspec'
+""Plug 'jgdavey/tslime.vim' "" send portion of text from a vim buffer to a running tmux session
 
 "" show project wide list of TODO, NOTE, FIXME
-"Plug 'LStinson/TagmaTasks'
+Plug 'LStinson/TagmaTasks'
 
 "" strip trailing whitespace on save
 Plug 'itspriddle/vim-stripper'
@@ -206,6 +216,9 @@ Plug 'gavinbeatty/dragvisuals.vim'
 " powerline for tmux/vim
 Plug 'powerline/powerline'
 
+" JADE template (pug)
+Plug 'digitaltoad/vim-pug'
+
 " Vim-airline
 if has("unix")
   let s:uname = system("uname")
@@ -222,7 +235,7 @@ endif
 "Plug 'xolox/vim-shell'
 
 " ansi escape sequences concealed
-Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'https://github.com/vim-scripts/AnsiEsc.vim'
 
 "" For writing Prose
 Plug 'kana/vim-textobj-user'
@@ -249,11 +262,10 @@ Plug 'jondkinney/rspec.vim'
 "" Run your Ruby tests
 Plug 'skalnik/vim-vroom'
 
-"" Holy grail of completion?
-"" Plug 'Valloric/YouCompleteMe'
-
 "" Markdown
 "Plug 'tpope/vim-markdown'
+"" API BLUEPRINT apib
+Plug 'kylef/apiblueprint.vim'
 
 "" Remote pairing
 "Plug 'Floobits/floobits-neovim'
@@ -294,11 +306,27 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/vimproc.vim'
 
+"" fish shell syntax
+Plug 'dag/vim-fish'
+
+"" open file in specfic line
+"" vi file.txt:20
+Plug 'bogado/file-line'
+
+"" Elixir
+Plug 'elixir-lang/vim-elixir'
+
+"" ELM
+Plug 'elmcast/elm-vim'
+
 " https://github.com/junegunn/vim-plug
 call plug#end()
 
+" needed by vim-textobj-rubyblock
+runtime macros/matchit.vim
+
 " Automatically install missing plugins on startup
-autocmd VimEnter *
+""autocmd VimEnter *
   \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall | q
   \| endif

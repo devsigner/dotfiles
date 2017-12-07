@@ -1,11 +1,40 @@
-# Search
---type-set=cucumber=.feature
---type-set=feature=.feature
---type-set=haml=.haml
---type-set=haml=.slim
---type-set=sass=.sass,.scss
+#ack is a tool like grep, designed for programmers with large trees of heterogeneous source code
 
-# Don't search
+#to install ack, see http://betterthangrep.com/
+#to use ack, launch terminal (mac osx) and type 'ack <some_keywords>'
+#ack will search all files in the current directory & sub-directories
+
+#here's how I have my config file setup. this file is located on mac osx here
+# ~/.dotfiles/ackrc
+
+# ignore Ctag file
+--ignore-file=is:tags
+
+# Always sort the files
+--sort-files
+
+# Always color, even if piping to a another program
+--color
+
+#make sure ack knows how to search common filetypes used in rails projects
+--type-add=css=scss
+--type-add=ruby=.slim,.rselm,.feature,.ru,.lock
+#Ignore some directories and files in rails projects
 --ignore-dir=log
---ignore-dir=tags
 --ignore-dir=tmp
+--ignore-dir=public
+--ignore-dir=vendor
+--ignore-file=is:.rubocop.yml
+--ignore-file=is:Gemfile
+--ignore-file=is:Gemfile.lock
+
+#node project
+--ignore-dir=node_modules
+--ignore-dir=dist
+
+#make sure ack knows how to search common filetypes used in node.js projects
+--ignore-dir=node_modules
+--type-set=coffee=.coffee
+--type-set=jade=.jade
+--type-set=feature=.feature
+--type-set=json=.json
