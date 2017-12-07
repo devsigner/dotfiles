@@ -6,12 +6,11 @@ set rtp+=~/.dotfiles/vim
 call plug#begin('~/.dotfiles/vim/plugged')
 autocmd! bufwritepost vundle source ~/.dotfiles/vim/plugs
 
+"" theme
+Plug 'altercation/vim-colors-solarized'
+
 "" project wide search
 Plug 'mileszs/ack.vim'
-"" Plug 'rking/ag.vim'
-
-"" Yaml stuff
-Plug 'avakhov/vim-yaml'
 
 "" ctrlp replacement
 "" FZF
@@ -36,6 +35,25 @@ Plug 'jistr/vim-nerdtree-tabs'
 " by switching to the next tab to the left.
 Plug 'jordwalke/VimCloser'
 
+"" aligning => stuff
+"" Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
+
+"" add automaticaly end of [{(
+Plug 'jiangmiao/auto-pairs'
+
+"" auto adds end to method definitions, blocks, etc
+Plug 'tpope/vim-endwise'
+
+"" drawer showing ctags
+Plug 'majutsushi/tagbar'
+
+"" Auto-update ctags files
+Plug 'craigemery/vim-autotag'
+
+"" <leader><leader>w jump to highlighted word
+Plug 'Lokaltog/vim-easymotion'
+
 "" Snippets
 ""---------
 
@@ -50,38 +68,11 @@ Plug 'garbas/vim-snipmate'
 "" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-""---------
-
 "" syntax checking on save
 Plug 'scrooloose/syntastic'
 
-""
-""Plug 'ngmy/vim-rubocop'
-
-"" aligning => stuff
-"" Plug 'junegunn/vim-easy-align'
-Plug 'godlygeek/tabular'
-
-"" add automaticaly end of [{(
-Plug 'jiangmiao/auto-pairs'
-
-"" drawer showing ctags
-Plug 'majutsushi/tagbar'
-
-"" Auto-update ctags files
-Plug 'craigemery/vim-autotag'
-
-"" easily switch between buffers
-" Plug 'jeetsukumaran/vim-buffergator'
-
-"" enabled .feature files
-Plug 'jondkinney/vim-cucumber'
-
-"" <leader><leader>w jump to highlighted word
-Plug 'Lokaltog/vim-easymotion'
-
-"" auto adds end to method definitions, blocks, etc
-Plug 'tpope/vim-endwise'
+"" GIT
+""-----
 
 "" git wrapper
 Plug 'tpope/vim-fugitive'
@@ -90,19 +81,21 @@ Plug 'https://github.com/tpope/vim-rhubarb.git'
 "" some vim runtime files that are more up to date than those distributed with vim itself
 Plug 'tpope/vim-git'
 
-""  enabled .haml extension
-Plug 'tpope/vim-haml'
+"" tig inside of vim with more power to traverse file history
+Plug 'gregsexton/gitv'
+Plug 'jreybert/vimagit'
 
-"" show indent guides to the left of the methods
-Plug 'nathanaelkane/vim-indent-guides'
+"" show diff in the left gutter
+Plug 'airblade/vim-gitgutter'
 
-"" some nice text wrappers for editing erb or html, ctrl+x in insert mode then type = or - or @ or #,etc
-Plug 'tpope/vim-ragtag'
+"" Gist things
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim' "" dependency of gist-vim
 
-"" essential rails plugin for navigating a rails proj
-Plug 'tpope/vim-rails'
+Plug 'killphi/vim-legend'
 
-Plug 'tpope/vim-projectionist'
+"" Helpers
+""--------
 
 "" easily change what something is surrounded by
 Plug 'tpope/vim-surround'
@@ -110,14 +103,8 @@ Plug 'tpope/vim-surround'
 "" repeat surround (and other) changes with .
 Plug 'tpope/vim-repeat'
 
-"" allows for moving blocks of text up and down in place like you could in textmate
-""Plug 'tpope/vim-unimpaired'
-
 "" Smart selection between pairs
 Plug 'gorkunov/smartpairs.vim'
-
-"" theme
-Plug 'altercation/vim-colors-solarized'
 
 "" lets you ctrl+w+o to toggle out a split to it's own buffer (easily can go back with the same command)
 Plug 'vim-scripts/ZoomWin'
@@ -125,25 +112,8 @@ Plug 'vim-scripts/ZoomWin'
 "" highlight code and send to pastie service
 Plug 'tpope/vim-pastie'
 
-"" Proper syntax highlighting and commenting capabilities
-""Plug 'tmux-plugins/vim-tmux'
-
-"" Regain focus events for terminal vim
-""Plug 'tmux-plugins/vim-tmux-focus-events'
-
-"" send vim commands (or text) to adjacent tmux pane
-""Plug 'benmills/vimux'
-
-"" sends focused tests to vimux with <leader>t
-"" Plug 'jgdavey/vim-turbux'
-"" Plug 'botandrose/vim-testkey'
-
 "" tpope answer to vimux (sends commands to tmux pane)
 Plug 'tpope/vim-dispatch'
-
-"" thoughtbot vim-rspec send to vim-dispatch, etc
-Plug 'thoughtbot/vim-rspec'
-""Plug 'jgdavey/tslime.vim' "" send portion of text from a vim buffer to a running tmux session
 
 "" show project wide list of TODO, NOTE, FIXME
 Plug 'LStinson/TagmaTasks'
@@ -151,36 +121,14 @@ Plug 'LStinson/TagmaTasks'
 "" strip trailing whitespace on save
 Plug 'itspriddle/vim-stripper'
 
-"" enable coffeescript
-Plug 'kchmck/vim-coffee-script'
-
-"" highlights Gemfile and wraps bundle open
-Plug 'tpope/vim-bundler'
-
-"" tig inside of vim with more power to traverse file history
-Plug 'gregsexton/gitv'
-Plug 'jreybert/vimagit'
-
-"" refactor model names
-Plug 'tpope/vim-abolish'
-
 "" cycle through yanks/deletes in a visual window or after pasting
 Plug 'vim-scripts/YankRing.vim'
 
 "" undo tree history navigation
 Plug 'sjl/gundo.vim'
 
-"" Gist things
-Plug 'mattn/gist-vim'
-
-"" dependency of gist-vim
-Plug 'mattn/webapi-vim'
-
 "" better vertical column selection / changing (vic will visual in column)
 Plug 'coderifous/textobj-word-column.vim'
-
-"" show diff in the left gutter
-Plug 'airblade/vim-gitgutter'
 
 "" intelligent session management. Auto writes changes when opening splits or quitting Vim
 Plug 'tpope/vim-obsession'
@@ -189,23 +137,14 @@ Plug 'tpope/vim-obsession'
 "" I added the ability to not jump to the next item immediately, but it has since been merged back.
 Plug 'henrik/vim-indexed-search'
 
-"" Project wide find and replace http://thepugautomatic.com/2012/07/project-wide-search-and-replace-in-vim-with-qdo/
-"Plug 'henrik/vim-qargs'
-
 " Don't jump to the next search, stay on current one
 Plug 'bronson/vim-visual-star-search'
-
-"" ensures windows are at least 80 chars wide (my PR added the ability to ignore a list of additional bufnames)
-" Plug 'justincampbell/vim-eighties'
 
 "" lets you type new things for each search replacement
 Plug 'hwrod/interactive-replace'
 
 " better incremental search, highlights in realtime everywhere as you type
 Plug 'haya14busa/incsearch.vim'
-
-"" navigate with C-h/j/k/l in tmux and vim
-""Plug 'christoomey/vim-tmux-navigator'
 
 "" like sublime multiple cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -216,9 +155,6 @@ Plug 'gavinbeatty/dragvisuals.vim'
 " powerline for tmux/vim
 Plug 'powerline/powerline'
 
-" JADE template (pug)
-Plug 'digitaltoad/vim-pug'
-
 " Vim-airline
 if has("unix")
   let s:uname = system("uname")
@@ -228,11 +164,6 @@ if has("unix")
     " Plug 'edkolev/tmuxline.vim'
   endif
 endif
-
-"" note taking
-"Plug 'xolox/vim-notes'
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-shell'
 
 " ansi escape sequences concealed
 Plug 'https://github.com/vim-scripts/AnsiEsc.vim'
@@ -245,8 +176,64 @@ Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-textobj-sentence'
 Plug 'reedes/vim-textobj-quote'
 
-"" Execute lines of code in Vim and show the results
-"" Plug 't9md/vim-ruby-xmpfilter'
+"" Less good than sass... so, yea
+Plug 'tpope/vim-dotenv'
+
+"" Code comments to github issues
+Plug 'Shougo/unite.vim'
+Plug 'alpaca-tc/vim-unite-watson.vim'
+
+Plug 'vimwiki/vimwiki'
+
+Plug 'Shougo/vimproc.vim'
+
+"" Markdown
+"Plug 'tpope/vim-markdown'
+"" API BLUEPRINT apib
+Plug 'kylef/apiblueprint.vim'
+
+" Dash docs
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    " Do Mac stuff here
+    Plug 'rizzatti/funcoo.vim'
+    Plug 'rizzatti/dash.vim'
+  endif
+endif
+
+"" open file in specfic line
+"" vi file.txt:20
+Plug 'bogado/file-line'
+
+"" RUBY / RAILS
+""--------------
+
+"" essential rails plugin for navigating a rails proj
+Plug 'tpope/vim-rails'
+
+"" Plug 'tpope/vim-projectionist'
+
+"" enabled .feature files
+Plug 'jondkinney/vim-cucumber'
+
+""  enabled .haml extension
+Plug 'tpope/vim-haml'
+
+"" show indent guides to the left of the methods
+Plug 'nathanaelkane/vim-indent-guides'
+
+"" Yaml stuff
+Plug 'avakhov/vim-yaml'
+
+"" thoughtbot vim-rspec send to vim-dispatch, etc
+Plug 'thoughtbot/vim-rspec'
+
+"" enable coffeescript
+"" Plug 'kchmck/vim-coffee-script'
+
+"" highlights Gemfile and wraps bundle open
+Plug 'tpope/vim-bundler'
 
 "" Select ruby blocks
 "" Plug 'kana/vim-textobj-user' # already initialied in the prose section
@@ -262,62 +249,33 @@ Plug 'jondkinney/rspec.vim'
 "" Run your Ruby tests
 Plug 'skalnik/vim-vroom'
 
-"" Markdown
-"Plug 'tpope/vim-markdown'
-"" API BLUEPRINT apib
-Plug 'kylef/apiblueprint.vim'
-
-"" Remote pairing
-"Plug 'Floobits/floobits-neovim'
-
 "" Slim template syntax highlighting
 Plug 'slim-template/vim-slim'
 
-" Dash docs
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    " Do Mac stuff here
-    Plug 'rizzatti/funcoo.vim'
-    Plug 'rizzatti/dash.vim'
-  endif
-endif
+Plug 'ecomba/vim-ruby-refactoring'
+
+"" JS / NODE
+""-----------
+
+" JADE template (pug)
+Plug 'digitaltoad/vim-pug'
 
 "" Handlebars templates
 Plug 'mustache/vim-mustache-handlebars'
 
-Plug 'ecomba/vim-ruby-refactoring'
-
-Plug 'killphi/vim-legend'
-
-"Plug 'bruno-/vim-ruby-fold'
-
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 
-"" Less good than sass... so, yea
-Plug 'tpope/vim-dotenv'
-
-"" Code comments to github issues
-Plug 'Shougo/unite.vim'
-Plug 'alpaca-tc/vim-unite-watson.vim'
-
-Plug 'vimwiki/vimwiki'
-
-Plug 'Shougo/vimproc.vim'
-
 "" fish shell syntax
 Plug 'dag/vim-fish'
-
-"" open file in specfic line
-"" vi file.txt:20
-Plug 'bogado/file-line'
 
 "" Elixir
 Plug 'elixir-lang/vim-elixir'
 
 "" ELM
 Plug 'elmcast/elm-vim'
+
+""---------------------------------------
 
 " https://github.com/junegunn/vim-plug
 call plug#end()
