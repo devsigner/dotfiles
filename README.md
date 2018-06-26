@@ -12,6 +12,33 @@ install brew:
 
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+ADSF: Version management:
+-------------------------
+
+https://github.com/asdf-vm/asdf#setup
+
+- required for building Ruby <= 1.9.3-p0:
+brew tap homebrew/dupes && brew install apple-gcc42
+
+- Some dependences
+brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
+
+install:
+  cd ~
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
+
+  # bash
+  echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
+  echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
+
+  # zsh
+  echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
+  echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+
+  # fish
+  echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
+  mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions<Paste>
+
 Shell
 -----
 
@@ -32,7 +59,6 @@ Shell
   More details and help:
   https://github.com/ellerbrock/fish-shell-setup-osx
 
-
 Some tools:
 ----------
 
@@ -50,7 +76,7 @@ Unix
     brew install openssl
     brew install rcm
     brew install reattach-to-user-namespace
-    brew install macvim
+    brew install neovim
     brew install v
     brew install zsh
     brew install ack
@@ -69,7 +95,6 @@ Then Set .vimrc
 
     set rtp+=/usr/local/opt/fzf
 
-
 -- Or with Vim Plug:
 
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -77,7 +102,6 @@ Then Set .vimrc
 Then Set .vimrc
 
     set rtp+=~/.fzf
-
 
 GitHub
 ------
@@ -100,9 +124,9 @@ Programming languages
 
     # should come after openssl
     brew install libyaml
-    brew install node
-    brew install rbenv
     brew install ruby-build
+    asdf plugin-add node
+    asdf plugin-add ruby 2.2.1
 
 Databases
 ---------
@@ -115,4 +139,3 @@ Databases
     
     brew install redis
     brew services start redis
-
