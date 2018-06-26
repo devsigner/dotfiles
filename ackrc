@@ -19,21 +19,26 @@
 #make sure ack knows how to search common filetypes used in rails projects
 --type-add=css=scss
 --type-add=ruby=.slim,.rselm,.feature,.ru,.lock
+
 #Ignore some directories and files in rails projects
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=public
---ignore-dir=vendor
 --ignore-file=is:.rubocop.yml
---ignore-file=is:Gemfile
 --ignore-file=is:Gemfile.lock
 
 #node project
 --ignore-dir=node_modules
 --ignore-dir=dist
 
+#node Elixir
+--ignore-dir=deps
+--ignore-dir=_build
+
+#jekyll
+--ignore-dir=_site
+
 #make sure ack knows how to search common filetypes used in node.js projects
---ignore-dir=node_modules
 --type-set=coffee=.coffee
 --type-set=jade=.jade
 --type-set=feature=.feature
