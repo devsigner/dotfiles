@@ -188,7 +188,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'Shougo/vimproc.vim'
 
 "" Markdown
-"Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 "" API BLUEPRINT apib
 Plug 'kylef/apiblueprint.vim'
 
@@ -271,6 +271,7 @@ Plug 'dag/vim-fish'
 
 "" Elixir
 Plug 'elixir-lang/vim-elixir'
+Plug 'janko-m/vim-test'
 
 "" ELM
 Plug 'elmcast/elm-vim'
