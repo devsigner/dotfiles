@@ -177,8 +177,8 @@ let g:indexed_search_keep_cursor_on_initial_result=1
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " This rewires n and N to do the highlighing...
-nnoremap <silent> N   n:call HLNext(0.4)<cr>
-nnoremap <silent> n   N:call HLNext(0.4)<cr>
+nnoremap <silent> n   n:call HLNext(0.4)<cr>
+nnoremap <silent> N   N:call HLNext(0.4)<cr>
 
 " Scroll 20 characters to the right
 map <C-L> 20zl
@@ -462,9 +462,6 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-
-" --------------
-
 nnoremap <Leader>ll :call NumberToggle()<CR>
 
 " --------------
@@ -502,7 +499,7 @@ vnoremap <Leader>S :s/\%V//g<Left><Left><Left>
 
 " --------------
 
-" Vim quick comande
+" Vim quick commande
 " --------------
 " Allow for typing various quit cmds while accidentally capitalizing a letter
 command! -bar Q quit                      "Allow quitting using :Q
