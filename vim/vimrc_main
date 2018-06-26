@@ -4,7 +4,7 @@ syntax enable                   "Turn on syntax highlighting
 let mapleader = ",""            "remap leader to ',' which is much easier than '\'
 let maplocalleader = "\\"       "add a local leader of '\'
 "" remap ; to : so you can just do `;w` instead of <Shift-; w>
-nnoremap ; :
+""nnoremap ; :
 
 "set cindent                    "recommended seting for automatic C-style indentation
 "set noexrc                     " don't use the local config
