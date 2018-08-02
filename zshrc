@@ -1,5 +1,7 @@
+export DOTFILES=$HOME/.dotfiles
+
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$DOTFILES/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -17,8 +19,8 @@ CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="true"
 
 # aliases
-if [ -e "$HOME/.dotfiles/aliases" ]; then
-  source "$HOME/.dotfiles/aliases"
+if [ -e "$DOTFILES/aliases" ]; then
+  source "$DOTFILES/aliases"
 fi
 
 # handle neovim to set cursor
@@ -114,4 +116,4 @@ iterm2_print_user_vars() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ack
-export ACKRC="$HOME/.dotfiles/ackrc"
+export ACKRC="$DOTFILES/ackrc"
