@@ -82,9 +82,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 fancy_echo "Set zsh theme"
 rm -R ~/.oh-my-zsh/custom/themes
-ln -s ~/.dotfiles/oh-my-zsh/custom/themes ~/.oh-my-zsh/custom/themes
+ln -s ~/.dotfiles/oh-my-zsh-custom/custom/themes ~/.oh-my-zsh/custom/themes
 rm -R ~/.oh-my-zsh/custom/plugins
-ln -s ~/.dotfiles/oh-my-zsh/custom/plugins ~/.oh-my-zsh/custom/plugins
+ln -s ~/.dotfiles/oh-my-zsh-custom/custom/plugins ~/.oh-my-zsh/custom/plugins
+ln -s ~/.dotfiles/oh-my-zsh-custom/custom/*.zsh ~/.oh-my-zsh/custom/
 
 fancy_echo "Symlinc rc files"
 ln -s ~/.dotfiles/vimrc ~/.vimrc
@@ -241,8 +242,8 @@ mas install 824171161
 # HTTP Client
 mas install 418138339
 
-if [ -f "$HOME/.laptop.local" ]; then
-  fancy_echo "Running your customizations from ~/.laptop.local ..."
-  # shellcheck disable=SC1090
-  . "$HOME/.laptop.local"
-fi
+# if [ -f "$HOME/.laptop.local" ]; then
+#   fancy_echo "Running your customizations from ~/.laptop.local ..."
+#   # shellcheck disable=SC1090
+#   . "$HOME/.laptop.local"
+# fi
