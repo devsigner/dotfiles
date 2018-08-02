@@ -4,7 +4,7 @@
   required = true
 [user]
   name = cedric darricau
-  email = cedric.darricau@augmentedev.com
+  email = cedricdarricau@gmail.com
 [color]
   ui = true
 [push]
@@ -12,16 +12,6 @@
 [pull]
   default = current
   rebase = true
-[merge "railsschema"]
-    name = newer Rails schema version
-    driver = "ruby -e '\n\
-              system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
-              b = File.read(%(%A))\n\
-              b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define\\(version: (\\d+)\\) do\\n=+\\nActiveRecord::Schema\\.define\\(version: (\\d+)\\) do\\n>+ .*/) do\n\
-                %(ActiveRecord::Schema.define(version: #{[$1, $2].max}) do)\n\
-              end\n\
-              File.open(%(%A), %(w)) {|f| f.write(b)}\n\
-              exit 1 if b.include?(%(<)*%L)'"
 [fetch]
   prune = true
 [alias]
@@ -29,3 +19,5 @@
   br = branch
   ci = commit
   st = status
+  pu = push
+  pl = pull
