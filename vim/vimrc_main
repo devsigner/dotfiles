@@ -157,19 +157,6 @@ map <leader>gR :call ShowRoutes()<cr>
 map <leader>gr :topleft 40 :split config/routes.rb<cr>
 map <leader>gg :topleft 40 :split Gemfile<cr>
 
-" Easy split navigation
-" ---------------------
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Vim: Navivate split
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-
 " SEARCH OPTIONS
 " -----------------
 let g:indexed_search_keep_cursor_on_initial_result=1
@@ -259,21 +246,6 @@ vmap ,{ c{<C-R>"}<ESC>
 map ,` ysiw`
 " -------------- END SURROUND SETTINGS ---------------
 
-" Floobits
-" --------------
-"map <leader>fs :FlooSummon<cr>
-"map <leader>ff :FlooToggleFollowMode<cr>
-"map <leader>fj :FlooJoinWorkspace https://floobits.com/r/jondkinney/bolstr<cr>
-
-" Dash
-" --------------
-"let g:dash_map = {
-"  \ 'ruby'       : 'rails'
-"  \ }
-au BufNewFile,BufRead *.rb :DashKeywords rails ruby<cr>
-nmap <silent> <LocalLeader>d <Plug>DashSearch
-nmap <silent> <LocalLeader>D <Plug>DashGlobalSearch
-
 " EasyMotion
 " --------------
 "  Default Mapping             | Details
@@ -312,25 +284,6 @@ endif
 if !has('nvim')
   set encoding=utf-8 " default in nvim
 endif
-
-" ------------------------
-
-" Vroom
-" ------------------------
-" current file
-"<leader>R
-" current test
-"<leader>r
-
-if has('nvim')
-  let g:vroom_use_color=1
-  let g:vroom_use_terminal=1
-endif
-
-"let g:vroom_use_spring=1
-let g:vroom_use_binstubs=1
-let g:vroom_use_bundle_exec=1
-let g:vroom_cucumber_path='cucumber'
 
 " ------------------------
 
@@ -488,17 +441,6 @@ vnoremap < <gv
 
 " --------------
 
-" Search and Replace
-" --------------
-"Search and replace the word under the cursor with whatever you type in
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-
-"Search and replace only within a given selection. This DOES NOT replace all
-" instances on the line that the highlight is on, which is why it's awesome.
-vnoremap <Leader>S :s/\%V//g<Left><Left><Left>
-
-" --------------
-
 " Vim quick commande
 " --------------
 " Allow for typing various quit cmds while accidentally capitalizing a letter
@@ -606,9 +548,6 @@ nnoremap ( :tabp<CR>
 nnoremap ) :tabn<CR>
 
 nmap <leader>t :tabnew<CR>
-
-" Load up all buffers into tabs
-nmap <localleader>bt :tab sball<CR>
 
 " --------------
 

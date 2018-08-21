@@ -29,7 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "" makes NERDTree awesome if you use tabs
-Plug 'jistr/vim-nerdtree-tabs'
+"" Plug 'jistr/vim-nerdtree-tabs'
 
 " Make Vim close tabs the way every other editor does
 " by switching to the next tab to the left.
@@ -53,20 +53,6 @@ Plug 'craigemery/vim-autotag'
 
 "" <leader><leader>w jump to highlighted word
 Plug 'Lokaltog/vim-easymotion'
-
-"" Snippets
-""---------
-
-"" Track the engine.
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-
-""Plug 'SirVer/ultisnips'
-"" similar to TextMate or other Vim plugins like UltiSnips
-Plug 'garbas/vim-snipmate'
-
-"" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
 
 "" syntax checking on save
 Plug 'scrooloose/syntastic'
@@ -109,14 +95,8 @@ Plug 'gorkunov/smartpairs.vim'
 "" lets you ctrl+w+o to toggle out a split to it's own buffer (easily can go back with the same command)
 Plug 'vim-scripts/ZoomWin'
 
-"" highlight code and send to pastie service
-Plug 'tpope/vim-pastie'
-
 "" tpope answer to vimux (sends commands to tmux pane)
 Plug 'tpope/vim-dispatch'
-
-"" show project wide list of TODO, NOTE, FIXME
-Plug 'LStinson/TagmaTasks'
 
 "" strip trailing whitespace on save
 Plug 'itspriddle/vim-stripper'
@@ -129,6 +109,8 @@ Plug 'sjl/gundo.vim'
 
 "" better vertical column selection / changing (vic will visual in column)
 Plug 'coderifous/textobj-word-column.vim'
+" needed by vim-textobj-rubyblock
+runtime macros/matchit.vim
 
 "" intelligent session management. Auto writes changes when opening splits or quitting Vim
 Plug 'tpope/vim-obsession'
@@ -189,18 +171,9 @@ Plug 'Shougo/vimproc.vim'
 
 "" Markdown
 Plug 'tpope/vim-markdown'
+
 "" API BLUEPRINT apib
 Plug 'kylef/apiblueprint.vim'
-
-" Dash docs
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    " Do Mac stuff here
-    Plug 'rizzatti/funcoo.vim'
-    Plug 'rizzatti/dash.vim'
-  endif
-endif
 
 "" open file in specfic line
 "" vi file.txt:20
@@ -219,6 +192,9 @@ Plug 'jondkinney/vim-cucumber'
 
 ""  enabled .haml extension
 Plug 'tpope/vim-haml'
+
+"" Slim template syntax highlighting
+Plug 'slim-template/vim-slim'
 
 "" show indent guides to the left of the methods
 Plug 'nathanaelkane/vim-indent-guides'
@@ -247,12 +223,7 @@ Plug 'tpope/vim-rake'
 Plug 'jondkinney/rspec.vim'
 
 "" Run your Ruby tests
-Plug 'skalnik/vim-vroom'
-
-"" Slim template syntax highlighting
-Plug 'slim-template/vim-slim'
-
-Plug 'ecomba/vim-ruby-refactoring'
+"" Plug 'skalnik/vim-vroom'
 
 "" JS / NODE
 ""-----------
@@ -266,9 +237,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 
-"" fish shell syntax
-Plug 'dag/vim-fish'
-
 "" Elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'janko-m/vim-test'
@@ -280,9 +248,6 @@ Plug 'elmcast/elm-vim'
 
 " https://github.com/junegunn/vim-plug
 call plug#end()
-
-" needed by vim-textobj-rubyblock
-runtime macros/matchit.vim
 
 " Automatically install missing plugins on startup
 ""autocmd VimEnter *
