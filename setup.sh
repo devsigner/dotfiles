@@ -241,6 +241,10 @@ mas install 824183456
 mas install 824171161
 # HTTP Client
 mas install 418138339
+# Magnet (Windows manager)
+mas install 441258766
+# Dash (local documentations)
+# mas install 934506838
 
 # if [ -f "$HOME/.laptop.local" ]; then
 #   fancy_echo "Running your customizations from ~/.laptop.local ..."
