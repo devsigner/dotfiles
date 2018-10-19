@@ -77,23 +77,25 @@ case "$SHELL" in
     ;;
 esac
 
-fancy_echo "Install oh my ZSH"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! -d "~/.oh-my-zsh" ] && [ -L "~/.oh-my-zsh" ]; then
+  fancy_echo "Install oh my ZSH"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 fancy_echo "Set zsh theme"
 rm -R ~/.oh-my-zsh/custom/themes
-ln -s ~/.dotfiles/oh-my-zsh-custom/custom/themes ~/.oh-my-zsh/custom/themes
+ln -fs ~/.dotfiles/oh-my-zsh-custom/custom/themes ~/.oh-my-zsh/custom/themes
 rm -R ~/.oh-my-zsh/custom/plugins
-ln -s ~/.dotfiles/oh-my-zsh-custom/custom/plugins ~/.oh-my-zsh/custom/plugins
-ln -s ~/.dotfiles/oh-my-zsh-custom/custom/*.zsh ~/.oh-my-zsh/custom/
+ln -fs ~/.dotfiles/oh-my-zsh-custom/custom/plugins ~/.oh-my-zsh/custom/plugins
+ln -fs ~/.dotfiles/oh-my-zsh-custom/custom/*.zsh ~/.oh-my-zsh/custom/
 
 fancy_echo "Symlinc rc files"
-ln -s ~/.dotfiles/vimrc ~/.vimrc
-ln -s ~/.dotfiles/zshrc ~/.zshrc
-ln -s ~/.dotfiles/ackrc ~/.ackrc
-ln -s ~/.dotfiles/pryrc ~/.pryrc
-ln -s ~/.dotfiles/gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/gitignore ~/.gitignore
+ln -fs ~/.dotfiles/vimrc ~/.vimrc
+ln -fs ~/.dotfiles/zshrc ~/.zshrc
+ln -fs ~/.dotfiles/ackrc ~/.ackrc
+ln -fs ~/.dotfiles/pryrc ~/.pryrc
+ln -fs ~/.dotfiles/gitconfig ~/.gitconfig
+ln -fs ~/.dotfiles/gitignore ~/.gitignore
 
 gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
@@ -163,6 +165,7 @@ cask "gpg-suite"
 brew "z"
 brew "fzf"
 brew "ripgrep"
+brew "direnv"
 
 # Applications
 cask "google-chrome"
@@ -171,10 +174,10 @@ cask "iterm2"
 cask "launchbar"
 
 # Some fonts
-cask homebrew/cask-fonts/font-consolas-for-powerline
-cask homebrew/cask-fonts/font-menlo-for-powerline
-cask homebrew/cask-fonts/font-roboto-mono-for-powerline
-cask homebrew/cask-fonts/font-menlo-for-powerline
+#cask homebrew/cask-fonts/font-consolas-for-powerline
+#cask homebrew/cask-fonts/font-menlo-for-powerline
+#cask homebrew/cask-fonts/font-roboto-mono-for-powerline
+#cask homebrew/cask-fonts/font-menlo-for-powerline
 
 # Databases
 #brew "postgres", restart_service: :changed
@@ -222,6 +225,7 @@ fancy_echo "Installing latest Ruby..."
 install_asdf_language "ruby"
 gem update --system
 gem_install_or_update "bundler"
+gem_install_or_update "lunchy"
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 
@@ -229,20 +233,20 @@ fancy_echo "Installing latest Node..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
 
-fancy_echo "Install some apps from AppStore"
-
-# 1Password
-mas install 443987910
-# Magnet
-mas install 441258766
-# Affinity Photo
-mas install 824183456
-# Affinity Designer
-mas install 824171161
-# HTTP Client
-mas install 418138339
-# Magnet (Windows manager)
-mas install 441258766
+# fancy_echo "Install some apps from AppStore"
+#
+# # 1Password
+# mas install 443987910
+# # Magnet
+# mas install 441258766
+# # Affinity Photo
+# mas install 824183456
+# # Affinity Designer
+# mas install 824171161
+# # HTTP Client
+# mas install 418138339
+# # Magnet (Windows manager)
+# mas install 441258766
 # Dash (local documentations)
 # mas install 934506838
 

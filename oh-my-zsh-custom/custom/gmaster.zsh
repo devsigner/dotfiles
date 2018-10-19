@@ -1,4 +1,4 @@
 # Git checkout master
-gdev() {
+gmaster() {
   git co master; git pull
 }

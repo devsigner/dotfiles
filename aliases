@@ -4,7 +4,10 @@ alias mkdir='mkdir -p'
 alias ...='../..'
 alias l='ls'
 alias ll='ls -l'
-alias la='ls -l'
+alias la='ls -la'
+
+# vim
+alias e="nvim"
 
 # git
 alias g="git"
@@ -12,3 +15,15 @@ alias gst="git status"
 
 # Bundler
 alias b="bundle"
+alias be="b exec"
+alias bi="b install"
+
+# Rails
+alias r="be rails"
+
+# Docker
+alias dk="docker"
+alias dkc="docker-compose"
+
+# Gitup
+alias gu="gitup"

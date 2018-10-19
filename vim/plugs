@@ -29,7 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "" makes NERDTree awesome if you use tabs
-"" Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Make Vim close tabs the way every other editor does
 " by switching to the next tab to the left.

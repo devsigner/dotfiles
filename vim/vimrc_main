@@ -273,9 +273,9 @@ map <LocalLeader> <Plug>(easymotion-prefix)
 " ------------------------
 
 " This allows you to share Vim's clipboard with OS X.
-" set clipboard=unnamed
+"set clipboard=unnamed
 if has('nvim')
-  " set clipboard+=unnamedplus
+  "set clipboard+=unnamedplus
 
   " exit :terminal
   :tnoremap <Esc> <C-\><C-n>
@@ -288,10 +288,10 @@ endif
 " ------------------------
 
 "" fix mouse support inside tmux
-if &term =~ '^screen' || &term =~ '^xterm'
-  " tmux knows the extended mouse mode
-  set ttyfast ttymouse=xterm2 lazyredraw ttyscroll=3
-endif
+"if &term =~ '^screen' || &term =~ '^xterm'
+  "" tmux knows the extended mouse mode
+  "set ttyfast ttymouse=xterm2 lazyredraw ttyscroll=3
+"endif
 
 set guifont=Meslo\ LG\ M\ for\ Powerline
 
@@ -317,6 +317,7 @@ let NERDTreeShowLineNumbers=1
 let g:nerdtree_tabs_focus_on_files=0
 let g:nerdtree_tabs_synchronize_focus=0
 let g:nerdtree_tabs_synchronize_view=0
+let g:nerdtree_tabs_smart_startup_focus=0
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:NERDTreeDirArrowExpandable = '‣'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -476,6 +477,14 @@ nmap S <nop>
 
 noremap SS :w<CR>
 noremap CF :call CleanFile()<CR>
+
+"" Only MacVim
+map <D-s> :w<CR>
+imap <D-s> <Esc>:w<CR>i
+
+"" Meta key
+map <M-s> :w<CR>
+imap <M-s> <Esc>:w<CR>i
 
 "Save the current file even if you don't have permission to do so
 map W!! :w !sudo tee % > /dev/null<CR>
@@ -828,8 +837,8 @@ function! s:VStarsearch_searchVWord()
   let @" = savedUnnamed
 endfunction
 
-nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
-vnoremap <silent> * :<C-u>call <SID>VStarsearch_searchVWord()<CR>:set hls<CR>
+nnoremap <silent> # :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
+vnoremap <silent> # :<C-u>call <SID>VStarsearch_searchVWord()<CR>:set hls<CR>
 
 let &cpo = s:savedCpo
 " End Star search

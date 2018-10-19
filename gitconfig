@@ -3,8 +3,8 @@
   smudge = git-lfs smudge %f
   required = true
 [user]
-  name = cedric darricau
-  email = cedricdarricau@gmail.com
+	name = Cedric Darricau
+	email = c.darricau@titandc.fr
 [color]
   ui = true
 [push]

@@ -1,13 +1,24 @@
 export DOTFILES=$HOME/.dotfiles
 
+export RPS1="%{$reset_color%}"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+source "/Users/cedricdarricau/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="spaceship"
+
+# Customizing Theme
+# Enable Vi Mode instead of default emac mode
+SPACESHIP_VI_MODE_COLOR="green"
+spaceship_vi_mode_enable
+# Battery level below which battery section will be shown
+SPACESHIP_BATTERY_THRESHOLD=30
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+SPACESHIP_JOBS_SYMBOL="👻"
 
 # automatically enter directories without cd
 setopt auto_cd
@@ -25,6 +36,11 @@ fi
 
 # handle neovim to set cursor
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -76,16 +92,16 @@ plugins=(
 
 # User configuration
 
-export PATH="$HOME/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.bin:$HOME/.iterm2:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_FR.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vi'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -112,8 +128,26 @@ iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
 
+# autojump : Z
+# brew install z
+. /usr/local/etc/profile.d/z.sh
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ack
 export ACKRC="$DOTFILES/ackrc"
+export PATH="$HOME/.bin:$PATH"
+
+# asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+# brew install direnv
+eval "$(direnv hook zsh)"
+
+# gem install lunchy
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
