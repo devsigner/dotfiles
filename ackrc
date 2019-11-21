@@ -24,6 +24,7 @@
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=public
+--ignore-dir=coverage
 --ignore-file=is:.rubocop.yml
 --ignore-file=is:Gemfile.lock
 

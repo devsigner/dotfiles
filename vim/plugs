@@ -104,6 +104,10 @@ Plug 'itspriddle/vim-stripper'
 "" cycle through yanks/deletes in a visual window or after pasting
 Plug 'vim-scripts/YankRing.vim'
 
+"" Swap panels
+"" https://github.com/wesQ3/vim-windowswap
+Plug 'wesQ3/vim-windowswap'
+
 "" undo tree history navigation
 Plug 'sjl/gundo.vim'
 
@@ -164,8 +168,6 @@ Plug 'tpope/vim-dotenv'
 "" Code comments to github issues
 Plug 'Shougo/unite.vim'
 Plug 'alpaca-tc/vim-unite-watson.vim'
-
-Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/vimproc.vim'
 

@@ -15,11 +15,11 @@ alias gst="git status"
 
 # Bundler
 alias b="bundle"
-alias be="b exec"
-alias bi="b install"
+#alias be="b exec"
+#alias bi="b install"
 
 # Rails
-alias r="be rails"
+alias r="bundle exec rails"
 
 # Docker
 alias dk="docker"

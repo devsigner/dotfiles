@@ -475,6 +475,7 @@ noremap Q! :q!<CR>
 "I never much liked the S command in normal mode. Substitutes the whole line after a motion. So we'll disable it here.
 nmap S <nop>
 
+noremap WW :w<CR>
 noremap SS :w<CR>
 noremap CF :call CleanFile()<CR>
 
@@ -500,7 +501,7 @@ cmap w!! w !sudo tee % >/dev/null
 "" <C-t> to jump back up the tags stack
 
 "Update CTags
-map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=tmp/** --exclude=public --verbose=no * <CR>
+map <Leader>ct :!ctags -R --exclude=.git --exclude=log --exclude=tmp/** --exclude=coverage --exclude=public --exclude=node_modules --verbose=no * <CR>
 
 " ExCTags window (requires http://ctags.sourceforge.net/)
 let g:tagbar_left = 1
@@ -589,6 +590,14 @@ nmap <Leader>SD [<C-d>
 
 " --------------
 
+" Launch test
+" --------------
+nmap TL :TestLast<CR>
+nmap TF :TestFile<CR>
+nmap TN :TestNearest<CR>
+
+" --------------
+
 " Tabularize
 " --------------
 " Alignment stuff
@@ -651,10 +660,14 @@ map <Leader>rc :call RunCurrentSpecFile()<CR>
 map <Leader>rr :call RunNearestSpec()<CR>
 map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
-let g:rspec_command = "Dispatch bundle exec bin/spring rspec --color {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec --color {spec}"
 
 " for rspec.vim (syntax highlighting enhancements for rspec)
 autocmd BufReadPost,BufNewFile *_spec.rb set syntax=rspec
+
+"" vim-test
+" -----------------
+let test#ruby#bundle_exec = 1
 
 " -----------------
 
@@ -670,6 +683,8 @@ let g:yankring_history_file = '.yankring-history'
 let g:gundo_right = 1
 let g:gundo_preview_bottom=1
 let g:gundo_preview_height = 40
+
+nnoremap <F5> :GundoToggle<CR>
 
 " Disable some built in commands I don't like
 map K <Nop>

@@ -132,6 +132,7 @@ tap "thoughtbot/formulae"
 tap "homebrew/cask"
 tap "universal-ctags/universal-ctags"
 tap "caskroom/cask"
+tap "nvie/tap"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]
@@ -150,6 +151,10 @@ brew "mas"
 
 # GitHub
 brew "hub"
+
+# Git
+brew "nvie/tap/git-toolbelt"
+brew "git-extras"
 
 # Image manipulation
 brew "imagemagick"

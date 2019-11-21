@@ -5,6 +5,9 @@ export RPS1="%{$reset_color%}"
 export ZSH=$HOME/.oh-my-zsh
 source "/Users/cedricdarricau/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
+# automatically enter directories without cd
+setopt auto_cd
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -20,27 +23,12 @@ SPACESHIP_BATTERY_THRESHOLD=30
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
 SPACESHIP_JOBS_SYMBOL="👻"
 
-# automatically enter directories without cd
-setopt auto_cd
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
-
-# aliases
-if [ -e "$DOTFILES/aliases" ]; then
-  source "$DOTFILES/aliases"
-fi
-
-# handle neovim to set cursor
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -55,7 +43,7 @@ export LC_CTYPE=en_US.UTF-8
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
  COMPLETION_WAITING_DOTS="true"
@@ -63,7 +51,7 @@ export LC_CTYPE=en_US.UTF-8
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -78,19 +66,30 @@ HIST_STAMPS="dd/mm/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  git-extra
-  bundler
-  osx
-  ruby
-  rails
-  bundler
   asdf
   brew
+  bundler
+  git
+  osx
+  rails
+  ruby
   web-search
 )
 
 # User configuration
+
+# aliases
+if [ -e "$DOTFILES/aliases" ]; then
+  source "$DOTFILES/aliases"
+fi
+
+# handle neovim to set cursor
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 export PATH="$HOME/.bin:$HOME/.iterm2:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
