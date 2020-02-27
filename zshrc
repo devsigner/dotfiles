@@ -71,7 +71,6 @@ plugins=(
   bundler
   git
   osx
-  rails
   ruby
   web-search
 )

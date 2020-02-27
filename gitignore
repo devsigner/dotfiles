@@ -26,3 +26,6 @@ tmp/**/*
 vendor/bundler_gems
 vim/.netrwhist
 zeus.json
+.env.*.local
+.env.local
+**/.env.local

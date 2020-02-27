@@ -11,6 +11,7 @@ Plug 'altercation/vim-colors-solarized'
 
 "" project wide search
 Plug 'mileszs/ack.vim'
+Plug 'jremmen/vim-ripgrep'
 
 "" ctrlp replacement
 "" FZF
@@ -56,6 +57,13 @@ Plug 'Lokaltog/vim-easymotion'
 
 "" syntax checking on save
 Plug 'scrooloose/syntastic'
+
+"" Inline evaluate ruby code
+"" gem install seeing_is_believing
+Plug 't9md/vim-ruby-xmpfilter'
+
+"" Lint Engine. check syntax
+Plug 'dense-analysis/ale'
 
 "" GIT
 ""-----

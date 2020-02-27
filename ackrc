@@ -27,6 +27,7 @@
 --ignore-dir=coverage
 --ignore-file=is:.rubocop.yml
 --ignore-file=is:Gemfile.lock
+--ignore-file=is:.tool-versions
 
 #node project
 --ignore-dir=node_modules
