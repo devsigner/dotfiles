@@ -24,3 +24,5 @@
 [core]
 	excludesfile = /Users/cedricdarricau/.gitignore
 	excludesfile = /Users/cedricdarricau/.gitignore-global
+[submodule]
+	recurse = true

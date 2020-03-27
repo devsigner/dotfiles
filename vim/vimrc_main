@@ -63,9 +63,16 @@ set expandtab                   "spaces instead of tabs for better cross-editor 
 set path+=**
 
 colorscheme solarized
+set guifont=Meslo\ LG\ M\ for\ Powerline
 
 set backupdir=./.backup,/tmp
 set directory=./.backup,/tmp
+
+" Reveal in Finder - opens finder to folder of the file that is currently open
+command! Oif execute '!open %:p:h'
+
+" Automatically source this file after it's saved
+autocmd! bufwritepost vimrc_main source %
 
 "" file browsing
 "let g:netrw_banner=0 " disabled annoying banner
@@ -123,7 +130,6 @@ vnoremap <F1> <ESC>
 
 " Pasting support
 set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
-nnoremap <F3> :GundoToggle<CR>
 
 nnoremap <silent> <F7> :YRShow<CR>
 nmap <F8> :TagbarToggle<CR>
@@ -137,6 +143,37 @@ map <leader>1 :set nonumber! number?<CR>
 nmap <silent> ,cq :cclose<CR>
 nmap <silent> ,oq :copen<CR>
 nmap <silent> ,co :copen<CR>
+
+" Redo
+map U :redo<CR>
+
+" Load up the vimrc_main file (this file) in vim to edit it
+nnoremap <Leader>ev :tabnew ~/.dotfiles/vim/vimrc_main<CR>
+
+" -------------
+
+" InteractiveReplace
+" https://github.com/vim-scripts/interactive-replace
+let g:InteractiveReplace_map = 'X'
+
+" -------------
+
+" Syntastic
+" -------------
+" let g:vimrubocop_config = '~/.rubocop/custom.yml'
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_warning_symbol = "⚠"
+
+" let g:syntastic_enable_signs=1
+
+let g:syntastic_aggregate_errors = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+
+" Visual Mode Orange Background, Black Text
+hi Visual guifg=#000000 guibg=#FD971F
 
 " Gitv
 " --------------
@@ -152,28 +189,32 @@ nmap <leader>gu :!gitup<CR><CR>
 " --------------
 let g:magit_show_magit_mapping="<Leader>gm"
 
-" Exit out of insert and insert a new line before with KK
-"inoremap KK <ESC>O
-
-" Exit out of insert and insert a new line with jj
-"inoremap jj <ESC>o
-
-" Exit out of insert and insert at line beginning with II
-"inoremap II <Esc>I
-" Exit out of insert and insert at line end with AA
-"inoremap AA <Esc>A
-
-" Redo
-map U :redo<CR>
-
-" Load up the vimrc_main file (this file) in vim to edit it
-nnoremap <Leader>ev :tabnew ~/.dotfiles/vim/vimrc_main<CR>
+" Ensures color scheme works for the gutter diff indicators
+highlight clear SignColumn
 
 " Rails
 " --------------
 map <leader>gR :call ShowRoutes()<cr>
 map <leader>gr :topleft 40 :split config/routes.rb<cr>
 map <leader>gg :topleft 40 :split Gemfile<cr>
+
+"From Gary Bernhardt
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 40 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Delete everything
+  :normal 1GdG
+  " Put routes output in buffer (NOTE: (2013-09-10) jonk => changed to " bin/rake)
+  :0r! bin/rake -s routes
+  " Size window to number of lines (1 plus rake output length)
+  :exec ":normal " . line("$") . "_ "
+  " Move cursor to bottom
+  :normal 1GG
+  " Delete empty trailing line
+  :normal dd
+endfunction
 
 " SEARCH OPTIONS
 " -----------------
@@ -182,8 +223,8 @@ let g:indexed_search_keep_cursor_on_initial_result=1
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " This rewires n and N to do the highlighing...
-nnoremap <silent> n   n:call HLNext(0.4)<cr>
-nnoremap <silent> N   N:call HLNext(0.4)<cr>
+nnoremap <silent> n   N:call HLNext(0.4)<cr>
+nnoremap <silent> N   n:call HLNext(0.4)<cr>
 
 " Scroll 20 characters to the right
 map <C-L> 20zl
@@ -325,8 +366,6 @@ endif
   "set ttyfast ttymouse=xterm2 lazyredraw ttyscroll=3
 "endif
 
-set guifont=Meslo\ LG\ M\ for\ Powerline
-
 " set text wrapping toggles
 "nmap <silent> <leader><Leader>tw :set invwrap<CR>:set wrap?<CR>
 
@@ -373,7 +412,7 @@ map <F5> 99+ 51_ j k
 
 " --------------
 
-" ZFZ
+" FZF
 " --------------
 map <Leader>f :Files<CR>
 map <Leader>b :Buffers<CR>
@@ -726,41 +765,17 @@ let g:yankring_history_file = '.yankring-history'
 
 " -----------------
 
-" Gundo
+" Gundo : temporary remove Plug
 " -----------------
 " Dig through the tree of undo possibilities for your current file
 "let g:gundo_right = 1
 "let g:gundo_preview_bottom=1
 "let g:gundo_preview_height = 40
 
-"nnoremap <F9> :GundoToggle<CR>
+"nnoremap <F9> :GundoToggle<CR> "
 
 " Disable some built in commands I don't like
 map K <Nop>
-
-" Ensures color scheme works for the gutter diff indicators
-highlight clear SignColumn
-
-" Automatically source this file after it's saved
-autocmd! bufwritepost vimrc_main source %
-
-"From Gary Bernhardt
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 40 :split __Routes__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer (NOTE: (2013-09-10) jonk => changed to " bin/rake)
-  :0r! bin/rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . "_ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-endfunction
 
 " -----------------
 
@@ -844,16 +859,6 @@ function! s:NumberTextObject(whole)
     endif
 endfunction
 
-let g:InteractiveReplace_map = 'X'
-
-"let g:signify_sign_color_guibg = '#032b36'
-let g:signify_sign_color_inherit_from_linenr = 1
-let g:signify_sign_weight = 'NONE'
-let g:signify_update_on_bufenter = 0
-
-" Reveal in Finder - opens finder to folder of the file that is currently open
-command! Oif execute '!open %:p:h'
-
 " search for stuff under the cursor, but don't jump to next match
 " Name: Star search
 " Author: Name5566 <name5566@gmail.com>
@@ -924,25 +929,6 @@ def zap():
 EOF
 command! -range=% Zap python zap()
 endif
-
-" -------------
-
-" Syntastic
-" -------------
-" let g:vimrubocop_config = '~/.rubocop/custom.yml'
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_warning_symbol = "⚠"
-
-" let g:syntastic_enable_signs=1
-
-let g:syntastic_aggregate_errors = 1
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-
-" Visual Mode Orange Background, Black Text
-hi Visual guifg=#000000 guibg=#FD971F
 
 " -------------
 

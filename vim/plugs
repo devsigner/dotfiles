@@ -11,7 +11,7 @@ Plug 'altercation/vim-colors-solarized'
 
 "" project wide search
 Plug 'mileszs/ack.vim'
-Plug 'jremmen/vim-ripgrep'
+"" Plug 'jremmen/vim-ripgrep'
 
 "" ctrlp replacement
 "" FZF
