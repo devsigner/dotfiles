@@ -16,6 +16,7 @@ set breakat=\ ^I!@*-+;:,./?\(\[\{ ""
 set cmdheight=2                 "make the command line a little taller to hide 'press enter to viem more' text
 set complete=.,w,b,u,t,kspell
 set copyindent                  "copy the previous indentation on autoindenting
+set colorcolumn=120             " Max line length marker
 set cursorcolumn                "highlight the current column. Visible in GUI mode only.
 set cursorline                  "underline the current line in the file
 set formatoptions=1
@@ -34,8 +35,8 @@ set notimeout ttimeout ttimeoutlen=10 " Quckly time out on keycodes, but never t
 set nospell
 set nowrap                      "no wrapping
 set number                      "Show line numbers
-set shell=/bin/bash             "I think I need this because I'm running ZSH actually...
-""set showbreak=↪                 " use when `set wrap`
+set shell=/bin/zsh              "I think I need this because I'm running ZSH actually...
+set showbreak=↪                 " use when `set wrap`
 set showcmd                     "show incomplete cmds down the bottom
 set showmatch                   "set show matching parenthesis
 set showmode                    "show current mode down the bottom
@@ -44,7 +45,7 @@ set smartindent
 set smarttab                    "use shiftwidth and softtabstop to insert or delete (on <BS>) blanks
 set splitbelow
 set splitright
-set synmaxcol=800               " Don't try to highlight lines longer than 800 characters.
+set synmaxcol=400               " Don't try to highlight lines longer than 800 characters.
 set timeout timeoutlen=1000 ttimeoutlen=10 " New timeout settings to exit out of insert more quickly
 set title
 set ttyfast                     " Improves screen redraw
@@ -107,12 +108,15 @@ let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_sign_error = '‼️'
 let g:ale_sign_warning = '⚠︎'
 let g:ale_fix_on_save = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 let g:airline#extensions#ale#enabled = 1
 augroup FiletypeGroup
     autocmd!
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
+
+" Plug 'jremmen/vim-ripgrep'
+let g:rg_command = 'rg --vimgrep -S'
 
 " Save when losing focus
 " au FocusLost * :silent! wall
@@ -167,8 +171,8 @@ let g:syntastic_warning_symbol = "⚠"
 " let g:syntastic_enable_signs=1
 
 let g:syntastic_aggregate_errors = 1
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 
@@ -188,6 +192,7 @@ nmap <leader>gu :!gitup<CR><CR>
 " Magit
 " --------------
 let g:magit_show_magit_mapping="<Leader>gm"
+let g:magit_refresh_gitgutter=1
 
 " Ensures color scheme works for the gutter diff indicators
 highlight clear SignColumn
@@ -427,10 +432,11 @@ let g:fzf_action = {
 
 " Ack
 " --------------
-" Ack in Project. AckG matches file names in the project, regular Ack looks inside those files
+" Ack in Project.
+" Ack matches file names in the project, regular Ack looks inside those files
 let g:ackhighlight = 1
-map <Leader><C-f> :Ack --ignore-dir=.deployments<space>
-map <Leader>F :Ack --ignore-dir=.deployments<space>
+map <Leader><C-f> :Ack --ignore-dir=.deployments<Space>
+map <Leader>F :Ack --ignore-dir=.deployments<Space>
 
 " --------------
 
@@ -475,18 +481,18 @@ endif
 " WINDOW SPLITS
 " -------------
 " Better split management, kept in sync with tmux' mappings of (<prefix>| and <prefix>-)
-noremap <leader>- :sp<CR><C-w>j
-noremap <leader>\| :vsp<CR><C-w>l
+noremap <C-W>- :sp<CR><C-w>j
+noremap <C-W>\| :vsp<CR><C-w>l
 
-if bufwinnr(1)
-  map = <C-W>+
-  map - <C-W>-
-  map + <C-W>>
-  map _ <C-W><
-endif
+"if bufwinnr(1)
+  "map = <C-W>+
+  "map - <C-W>-
+  "map + <C-W>>
+  "map _ <C-W><
+"endif
 
 " Adjust viewports to the same size
-map <Leader>= <C-w>=
+"map <Leader>= <C-w>=
 
 " --------------
 
@@ -561,6 +567,7 @@ nmap S <nop>
 
 noremap WW :w<CR>
 noremap SS :w<CR>
+noremap GA :Git add %<CR>
 noremap CF :call CleanFile()<CR>
 
 "" Only MacVim

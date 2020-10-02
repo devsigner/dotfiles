@@ -46,6 +46,9 @@ Plug 'jiangmiao/auto-pairs'
 "" auto adds end to method definitions, blocks, etc
 Plug 'tpope/vim-endwise'
 
+"" list TODO, FIXME and Notes definitions
+Plug 'JessicaKMcIntosh/TagmaTasks'
+
 "" drawer showing ctags
 Plug 'majutsushi/tagbar'
 
@@ -58,12 +61,20 @@ Plug 'Lokaltog/vim-easymotion'
 "" syntax checking on save
 Plug 'scrooloose/syntastic'
 
+"" syntax MJML
+Plug 'amadeus/vim-mjml'
+
 "" Inline evaluate ruby code
 "" gem install seeing_is_believing
 Plug 't9md/vim-ruby-xmpfilter'
 
 "" Lint Engine. check syntax
 Plug 'dense-analysis/ale'
+
+"" Autocompletion
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'etordera/deoplete-rails'
+let g:deoplete#enable_at_startup = 1
 
 "" GIT
 ""-----

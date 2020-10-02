@@ -3,8 +3,8 @@
   smudge = git-lfs smudge %f
   required = true
 [user]
-	name = cedric.d
-	email = cedricdarricau@gmail.com
+  name = cedric.d
+  email = cedricdarricau@gmail.com
 [color]
   ui = true
 [push]
@@ -22,7 +22,9 @@
   pu = push
   pl = pull
 [core]
-	excludesfile = /Users/cedricdarricau/.gitignore
-	excludesfile = /Users/cedricdarricau/.gitignore-global
+  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore-global
 [submodule]
-	recurse = true
+  recurse = true
+[credential "github.com"]
+  useHttpPath = false
