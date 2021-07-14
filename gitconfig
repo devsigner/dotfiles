@@ -21,6 +21,7 @@
   st = status
   pu = push
   pl = pull
+  ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
   excludesfile = ~/.gitignore
   excludesfile = ~/.gitignore-global
@@ -28,3 +29,5 @@
   recurse = true
 [credential "github.com"]
   useHttpPath = false
+[init]
+  defaultBranch = master

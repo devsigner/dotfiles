@@ -6,24 +6,27 @@ alias l='ls'
 alias ll='ls -l'
 alias la='ls -la'
 
-# vim
+# Vim/neovim
 alias e="nvim"
 
-# git
+# Git
 alias g="git"
 alias gst="git status"
+alias magit="vim -c MagitOnly"
+alias gu="gitup"
 
 # Bundler
 alias b="bundle"
-#alias be="b exec"
-#alias bi="b install"
+alias be="bundle exec"
+alias bi="bundle install"
+alias bo="bundle open"
 
 # Rails
 alias r="bundle exec rails"
+alias rs="r s -b 0.0.0.0"
+alias rc="r c"
+alias rdbm="r db:migrate"
+alias rg="r g"
 
-# Docker
-alias dk="docker"
-alias dkc="docker-compose"
-
-# Gitup
-alias gu="gitup"
+# Spring
+alias ss="spring stop"

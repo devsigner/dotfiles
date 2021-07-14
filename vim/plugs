@@ -9,6 +9,9 @@ autocmd! bufwritepost vundle source ~/.dotfiles/vim/plugs
 "" theme
 Plug 'altercation/vim-colors-solarized'
 
+"" Editor config File
+Plug 'editorconfig/editorconfig-vim'
+
 "" project wide search
 Plug 'mileszs/ack.vim'
 "" Plug 'jremmen/vim-ripgrep'

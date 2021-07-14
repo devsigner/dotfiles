@@ -61,6 +61,8 @@ set shiftround                  "when at 3 spaces, and I hit > ... go to 4, not 
 set shiftwidth=2                "number of spaces to use in each autoindent step
 set expandtab                   "spaces instead of tabs for better cross-editor compatibility
 
+set updatetime=500
+
 set path+=**
 
 colorscheme solarized
@@ -189,9 +191,9 @@ vmap <leader>gV :NERDTreeTabsClose<cr>:Gitv! --all<cr>
 " --------------
 nmap <leader>gu :!gitup<CR><CR>
 
-" Magit
+" Magit - Ease your git workflow within vim
 " --------------
-let g:magit_show_magit_mapping="<Leader>gm"
+let g:magit_show_magit_mapping="<Leader>mg"
 let g:magit_refresh_gitgutter=1
 
 " Ensures color scheme works for the gutter diff indicators
@@ -435,8 +437,9 @@ let g:fzf_action = {
 " Ack in Project.
 " Ack matches file names in the project, regular Ack looks inside those files
 let g:ackhighlight = 1
-map <Leader><C-f> :Ack --ignore-dir=.deployments<Space>
-map <Leader>F :Ack --ignore-dir=.deployments<Space>
+" map <Leader><C-f> :Ack --ignore-dir=.deployments<Space>
+map <Leader><C-f> :Ack<Space>
+map <Leader>F :Ack<Space>
 
 " --------------
 
@@ -592,7 +595,8 @@ cmap w!! w !sudo tee % >/dev/null
 "" <C-t> to jump back up the tags stack
 
 "Update CTags
-map <Leader>ct :!ctags -R --exclude=.git --exclude=.* --exclude=log --exclude=tmp/** --exclude=coverage --exclude=public --exclude=node_modules --verbose=no * <CR>
+map <Leader>ct :!ctags  --exclude=.git --exclude=log --fields=+KSn -f .tags -R . <CR>
+map <Leader>ctb :!ctags  --exclude=.git --exclude=log --fields=+KSn -f .tags_bundler -R $(bundle list --paths) <CR>
 
 " ExCTags window (requires http://ctags.sourceforge.net/)
 let g:tagbar_left = 1
